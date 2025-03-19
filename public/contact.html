@@ -81,7 +81,7 @@
         >
           <div class="">
             <p class="text-sm text-gray-400">kamto.076s@gmail.com</p>
-            <p class="text-base font-light hover:underline dark:text-gray-300"><a href="">Email</a></p>
+            <p class="text-base font-light hover:underline dark:text-gray-300"><a href="mailto:kamto.076s@gmail.com">Email</a></p>
           </div>
           <div>
             <i class="p-2 text-gray-500 bg-gray-200 rounded-md fa-solid fa-envelope dark:bg-gray-800 dark:text-gray-950"></i>
@@ -138,9 +138,10 @@
 
           <button
             type="submit"
+            id="send-btn"
             class="inline-flex items-center px-4 py-3 mt-3 text-white bg-gray-900 rounded-lg hover:bg-gray-700 dark:bg-gray-50 dark:hover:bg-gray-200 dark:text-gray-900"
           >
-            Send Message <i class="ml-2 fa-regular fa-paper-plane"></i>
+            <span id="send-btn-text">Send Message </span>
           </button>
 
           <p id="alert-success" class="hidden mt-3 text-green-500">Email sent successfully!</p>
@@ -171,6 +172,12 @@
       document.getElementById("contact-form").addEventListener("submit", function (event) {
         event.preventDefault(); // Mencegah reload form
 
+        let sendBtn = document.getElementById("send-btn");
+        let sendBtnText = document.getElementById("send-btn-text");
+
+        sendBtnText.textContent = "Sending...";
+        sendBtn.disabled = true;
+
         let params = {
           name: document.getElementById("name").value,
           email: document.getElementById("email").value,
@@ -178,21 +185,28 @@
           message: document.getElementById("message").value,
         };
 
-        console.log(params); // Debugging, cek di console
+        console.log(params);
 
         emailjs.send("service_tfbyl94", "template_k7i3a3l", params).then(
           function (response) {
-            // Tampilkan alert
             document.getElementById("alert-success").classList.remove("hidden");
+            document.getElementById("alert-failed").classList.add("hidden");
 
-            // Hapus parameter dari URL agar tidak mengirim ulang saat refresh
+            document.getElementById("contact-form").reset();
+
+            sendBtnText.textContent = "Send Message";
+            sendBtn.disabled = false;
+
             window.history.replaceState({}, document.title, window.location.pathname);
-
-            document.getElementById("contact-form").reset(); // Reset form setelah berhasil
           },
           function (error) {
             document.getElementById("alert-failed").classList.remove("hidden");
-            console.log(error); // Debugging jika error
+            document.getElementById("alert-success").classList.add("hidden");
+
+            console.log(error);
+
+            sendBtnText.textContent = "Send Message";
+            sendBtn.disabled = false;
           }
         );
       });
