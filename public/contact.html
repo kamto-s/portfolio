@@ -44,8 +44,8 @@
           class="flex items-center justify-between p-4 mb-3 border border-gray-200 rounded-xl hover:bg-gray-100 dark:border-gray-900 dark:hover:bg-gray-900"
         >
           <div class="">
-            <p class="text-sm text-gray-400">@kamto-s</p>
             <p class="text-base font-light hover:underline dark:text-gray-300"><a href="https://www.linkedin.com/in/kamto-s/">Linkedin</a></p>
+            <p class="text-sm text-gray-400">@kamto-s</p>
           </div>
           <div>
             <i class="p-2 text-gray-500 bg-gray-200 rounded-md fa-brands fa-linkedin-in dark:bg-gray-800 dark:text-gray-950"></i>
@@ -56,8 +56,8 @@
           class="flex items-center justify-between p-4 mb-3 border border-gray-200 rounded-xl hover:bg-gray-100 dark:border-gray-900 dark:hover:bg-gray-900"
         >
           <div class="">
-            <p class="text-sm text-gray-400">@kamto-s</p>
             <p class="text-base font-light hover:underline dark:text-gray-300"><a href="https://github.com/kamto-s">Github</a></p>
+            <p class="text-sm text-gray-400">@kamto-s</p>
           </div>
           <div>
             <i class="p-2 text-gray-500 bg-gray-200 rounded-md fa-brands fa-github dark:bg-gray-800 dark:text-gray-950"></i>
@@ -68,8 +68,8 @@
           class="flex items-center justify-between p-4 mb-3 border border-gray-200 rounded-xl hover:bg-gray-100 dark:border-gray-900 dark:hover:bg-gray-900"
         >
           <div class="">
-            <p class="text-sm text-gray-400">@kamto_076</p>
             <p class="text-base font-light hover:underline dark:text-gray-300"><a href="https://www.instagram.com/kamto_076/">Instagram</a></p>
+            <p class="text-sm text-gray-400">@kamto_076</p>
           </div>
           <div>
             <i class="p-2 text-gray-500 bg-gray-200 rounded-md fa-brands fa-square-instagram dark:bg-gray-800 dark:text-gray-950"></i>
@@ -80,8 +80,13 @@
           class="flex items-center justify-between p-4 mb-3 border border-gray-200 rounded-xl hover:bg-gray-100 dark:border-gray-900 dark:hover:bg-gray-900"
         >
           <div class="">
-            <p class="text-sm text-gray-400">kamto.076s@gmail.com</p>
             <p class="text-base font-light hover:underline dark:text-gray-300"><a href="mailto:kamto.076s@gmail.com">Email</a></p>
+            <div class="flex items-center text-sm text-gray-400">
+              <p class="text-sm text-gray-400" id="myEmail">kamto.076s@gmail.com</p>
+              <button onclick="copyEmail()">
+                <i class="ml-2 fa-solid fa-copy"></i>
+              </button>
+            </div>
           </div>
           <div>
             <i class="p-2 text-gray-500 bg-gray-200 rounded-md fa-solid fa-envelope dark:bg-gray-800 dark:text-gray-950"></i>
@@ -158,6 +163,26 @@
 
     <!-- sun-moon -->
     <script src="assets/js/app.js"></script>
+
+    <!-- copy-email -->
+    <script>
+      function copyEmail() {
+        var copyEmail = document.getElementById("myEmail").textContent;
+
+        console.log(copyEmail);
+
+        navigator.clipboard.writeText(copyEmail).then(
+          function () {
+            console.log("Email successfully copied to clipboard! 📋");
+            alert("Email successfully copied to clipboard! 📋");
+          },
+          function (err) {
+            console.error("Failed to copy email", err);
+            alert("Failed to copy email" + err);
+          }
+        );
+      }
+    </script>
 
     <!-- send emailJs -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
