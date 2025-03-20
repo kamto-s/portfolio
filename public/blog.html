@@ -57,52 +57,8 @@
             </svg>
           </a>
         </div>
+        <!-- end card -->
       </div>
-      <!-- end card -->
-
-        <!-- card -->
-        <div class="max-w-full p-6 mb-5 border border-gray-200 rounded-lg hover:bg-gray-100 item dark:border-gray-900 dark:hover:bg-gray-900">
-          <p class="text-sm text-gray-400">Jan 15, 2025</p>
-          <a href="blog-detail.html" class="mb-3 font-semibold text-gray-800 hover:underline dark:text-gray-300 text-normal">
-            <p class="my-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          </a>
-          <p class="mb-3 font-normal text-gray-400 dark:text-gray-400">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta animi repellat temporibus sed perspiciatis harum deserunt.
-          </p>
-          <a
-            href="blog-detail.html"
-            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-700 dark:bg-gray-50 dark:hover:bg-gray-200 dark:text-gray-900"
-          >
-            Read more
-            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <!-- end card -->
-
-        <!-- card -->
-        <div class="max-w-full p-6 mb-5 border border-gray-200 rounded-lg hover:bg-gray-100 item dark:border-gray-900 dark:hover:bg-gray-900">
-          <p class="text-sm text-gray-400">Jan 15, 2025</p>
-          <a href="blog-detail.html" class="mb-3 font-semibold text-gray-800 hover:underline dark:text-gray-300 text-normal">
-            <p class="my-1">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-          </a>
-          <p class="mb-3 font-normal text-gray-400 dark:text-gray-400">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta animi repellat temporibus sed perspiciatis harum deserunt.
-          </p>
-          <a
-            href="blog-detail.html"
-            class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-gray-900 rounded-lg hover:bg-gray-700 dark:bg-gray-50 dark:hover:bg-gray-200 dark:text-gray-900"
-          >
-            Read more
-            <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
-              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
-            </svg>
-          </a>
-        </div>
-      </div>
-      <!-- end card -->
       <div class="flex justify-center mt-5">
         <button
           id="btnLoadMore"
@@ -127,7 +83,7 @@
         const btnLoadMore = document.getElementById("btnLoadMore");
         const itemsContainer = document.querySelector(".items");
         const items = document.querySelectorAll(".item");
-        const itemsPerPage = 1;
+        const itemsPerPage = 3;
         let visibleItems = itemsPerPage;
 
         items.forEach((item, index) => {
@@ -141,9 +97,9 @@
         }
 
         function showMoreItems() {
-          btnLoadMore.textContent="Loading...";
+          btnLoadMore.textContent = "Loading...";
 
-          setTimeout(()=>{
+          setTimeout(() => {
             visibleItems += itemsPerPage;
             items.forEach((item, index) => {
               if (index < visibleItems) {
@@ -152,16 +108,15 @@
             });
             if (visibleItems >= items.length) {
               btnLoadMore.style.display = "none";
-            }else{
-              btnLoadMore.textContent="Load More";
+            } else {
+              btnLoadMore.textContent = "Load More";
             }
-          },500);      
+          }, 500);
         }
 
         if (btnLoadMore) {
           btnLoadMore.addEventListener("click", showMoreItems);
         }
-        
       });
     </script>
 
